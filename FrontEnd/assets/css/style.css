@@ -111,7 +111,8 @@ li img {
 
 li:hover {
 	color: #000;
-	font-weight: bold;
+	font-weight: 700;
+	cursor: pointer;
 }
 
 /* Introduction section */
@@ -162,6 +163,37 @@ h2 {
 	margin-bottom: 50px;
 }
 
+.filters {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 50px;
+}
+
+.filters button {
+	color: #1D6154;
+	font-family: 'Syne';
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+	background-color: transparent;
+	padding: 9px 11px;
+	cursor: pointer;
+}
+
+.filters button:first-child {
+	color: #FFF;
+	background-color: #1D6154;
+	padding: 9px 30px;
+}
+
+.filters button:nth-child(2) {
+	padding: 9px 20px;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -174,6 +206,14 @@ h2 {
 	width: 100%;
 }
 
+.gallery figcaption {
+	font-size: 0.813rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin-top: 1px;
+}
+
 #contact {
 	width: 50%;
 	margin: auto;
@@ -184,12 +224,19 @@ h2 {
 }
 
 #contact h2 {
-	margin-bottom: 20px;
+	margin-bottom: 9px;
+}
+
+#contact p {
+	color: #3D3D3D;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
 }
 
 #contact form {
 	text-align: left;
-	margin-top:30px;
 	display: flex;
 	flex-direction: column;
 }
@@ -200,28 +247,42 @@ h2 {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
 #contact label {
-	margin: 2em 0 1em 0;
+	color: #3D3D3D;
+	font-size: 0.875rem;
+	font-weight: 500;
+	font-style: normal;
+	line-height: normal;
+	margin: 2.5rem 0 0.5rem 0;
 }
+
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-input[type="submit"]{
+#contact input[type="submit"]{
 	font-family: 'Syne';
+	font-size: 0.875rem;
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em auto ;
+	margin : 2.5rem auto;
 	width: 180px;
+	height: 36px;
 	text-align: center;
-	border-radius: 60px ;
+	border-radius: 60px;
 }
 
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
+	margin: 0.875rem 2rem 2rem 2rem;
+}
+
+footer ul li {
+	font-size: 0.875rem;
+	font-weight: 300;
 }
 
