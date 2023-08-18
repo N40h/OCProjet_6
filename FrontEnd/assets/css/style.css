@@ -47,64 +47,93 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
+
 body {
 	max-width: 1140px;
-	margin:auto;
-	font-family: 'Work Sans' ;
+	margin: auto;
+	font-family: 'Work Sans';
 	font-size: 14px;
 }
+
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
-}
-section {
-	margin: 50px 0
+	margin: 50px 0 149px 0;
 }
 
-h1{
+section {
+	margin: 50px 0;
+}
+
+/* Header */
+h1 {
 	display: flex;
 	flex-direction: column;
 	font-family: 'Syne';
 	font-size: 22px;
+	font-style: normal;
 	font-weight: 800;
-	color: #B1663C
+	line-height: normal;
+	color: #B1663C;
 }
 
 h1 > span {
 	font-family: 'Work Sans';
-	font-size:10px;
-	letter-spacing: 0.1em;
-;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	letter-spacing: 0.031rem;
+	text-transform: uppercase;
 }
 
-h2{
-	font-family: 'Syne';
-	font-weight: 700;
-	font-size: 30px;
-	color: #1D6154
-}
 nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-
+	gap: 44px;
 }
+
 nav li {
+	display: flex;
+	color: #000;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
 	padding: 0 10px;
-	font-size: 1.2em;
+}
+
+li img {
+	width: 22px;
+	height: 22px;
 }
 
 li:hover {
-	color: #B1663C;
+	color: #000;
+	font-weight: bold;
 }
+
+/* Introduction section */
+h2 {
+	font-family: 'Syne';
+	font-size: 1.875rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	color: #1D6154;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;
+	margin: 50px 0 140px 0;
 }
+
 #introduction figure {
-	flex: 1
+	flex: 1;
 }
+
 #introduction img {
 	display: block;
 	margin: auto;
@@ -112,19 +141,27 @@ li:hover {
 }
 
 #introduction article {
-	flex: 1
+	flex: 1;
 }
+
 #introduction h2 {
-	margin-bottom: 1em;
+	margin-bottom: 19px;
 }
 
 #introduction p {
-	margin-bottom: 0.5em;
+	color: #3D3D3D;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin-bottom: 15px;
+	width: 70%;
 }
+
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
+	margin-bottom: 50px;
 }
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -135,19 +172,21 @@ li:hover {
 
 .gallery img {
 	width: 100%;
-
 }
+
 #contact {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
+
 #contact > * {
 	text-align: center;
-
 }
-#contact h2{
+
+#contact h2 {
 	margin-bottom: 20px;
 }
+
 #contact form {
 	text-align: left;
 	margin-top:30px;
