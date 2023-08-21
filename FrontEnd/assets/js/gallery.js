@@ -1,8 +1,8 @@
 /***********************
 /*         DOM
 /**********************/
-const gallery = document.querySelector('.gallery');
-const filters = document.querySelector('.filters');
+const GALLERY = document.querySelector('.gallery');
+const FILTERS = document.querySelector('.filters');
 
 /***********************
 /*      Variables
@@ -16,25 +16,22 @@ let displayedWorks = [];
 /**********************/
 async function getWorks() {
 	const response = await fetch('http://localhost:5678/api/works');
-	const data = await response.json();
+	works = await response.json();
 
-	works = data;
 	displayedWorks = works;
 
-	displayWorks(displayedWorks);
+	renderWorks(displayedWorks);
 }
 
 async function getCategories() {
 	const response = await fetch('http://localhost:5678/api/categories');
-	const data = await response.json();
+	categories = await response.json();
 
-	categories = data;
-
-	displayCategories(categories);
+	renderCategories(categories);
 }
 
-function displayWorks(data) {
-	gallery.innerHTML = '';
+function renderWorks(data) {
+	GALLERY.innerHTML = '';
 
 	data.forEach((work) => {
 		let galleryItem = document.createElement('figure');
@@ -42,35 +39,36 @@ function displayWorks(data) {
 		let galleryItemTitle = document.createElement('figcaption');
 
 		galleryItemImage.src = work.imageUrl;
+		galleryItemImage.alt = work.title;
 		galleryItemTitle.innerHTML = work.title;
 
-		gallery.appendChild(galleryItem);
 		galleryItem.appendChild(galleryItemImage);
 		galleryItem.appendChild(galleryItemTitle);
+		GALLERY.appendChild(galleryItem);
 	});
 }
 
-function displayCategories(data) {
+function renderCategories(data) {
 	const filtersAllButton = document.createElement('button');
 	filtersAllButton.textContent = 'Tous';
-	filters.appendChild(filtersAllButton);
+	FILTERS.appendChild(filtersAllButton);
 
-	categories.forEach((category) => {
+	data.forEach((category) => {
 		let filtersButton = document.createElement('button');
 		filtersButton.textContent = category.name;
 
-		filters.appendChild(filtersButton);
+		FILTERS.appendChild(filtersButton);
 
 		filtersButton.addEventListener('click', () => {
 			const filteredWorks = works.filter(
 				(work) => work.categoryId === category.id
 			);
-			displayWorks(filteredWorks);
+			renderWorks(filteredWorks);
 		});
 	});
 
 	filtersAllButton.addEventListener('click', () => {
-		displayWorks(displayedWorks);
+		renderWorks(displayedWorks);
 	});
 }
 
