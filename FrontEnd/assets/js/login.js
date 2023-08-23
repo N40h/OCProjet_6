@@ -71,27 +71,18 @@ function logoutUser() {
 	logoutElement.addEventListener('click', () => {
 		sessionStorage.removeItem('token');
 		window.location.reload();
-		setEditMode();
 		toggleEditMode();
 	});
 }
 
-function setEditMode() {
-	if (userConnected) {
-		editMode = true;
-	} else {
-		editMode = false;
-	}
-}
-
 function toggleEditMode() {
-	setEditMode();
-
-	if (editMode) {
+	if (userConnected) {
 		editModeElements.forEach((element) => {
 			element.style.display = 'flex';
 		});
 		loginElement.style.display = 'none';
+		FILTERS.style.display = 'none';
+		document.querySelector('.projets').style.margin = '0px 0px 92px 0px';
 	} else {
 		editModeElements.forEach((element) => {
 			element.style.display = 'none';
@@ -101,5 +92,5 @@ function toggleEditMode() {
 }
 
 loginUser();
-toggleEditMode();
 logoutUser();
+toggleEditMode();

@@ -40,7 +40,7 @@ function renderWorks(data) {
 
 		galleryItemImage.src = work.imageUrl;
 		galleryItemImage.alt = work.title;
-		galleryItemTitle.innerHTML = work.title;
+		galleryItemTitle.textContent = work.title;
 
 		galleryItem.appendChild(galleryItemImage);
 		galleryItem.appendChild(galleryItemTitle);
@@ -49,6 +49,8 @@ function renderWorks(data) {
 }
 
 function renderCategories(data) {
+	FILTERS.innerHTML = '';
+
 	const filtersAllButton = document.createElement('button');
 	filtersAllButton.textContent = 'Tous';
 	FILTERS.appendChild(filtersAllButton);

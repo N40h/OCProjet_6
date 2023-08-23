@@ -34,8 +34,11 @@
 				<section id="introduction">
 					<figure>
 						<img src="./assets/images/sophie-bluel.png" alt="Sophie Bluel Portrait">
-						<figcaption class="edit">
-							<i class="fa-regular fa-pen-to-square">modifier</i>
+						<figcaption>
+							<a href="#modal" class="edit open__modal">
+								<i class="fa-regular fa-pen-to-square"></i>
+								modifier
+							</a>
 						</figcaption>
 					</figure>
 					<article>
@@ -46,13 +49,15 @@
 					</article>
 				</section>
 				<section id="portfolio">
-					<h2>Mes Projets</h2>
-					<div class="edit">
-						<i class="fa-regular fa-pen-to-square">modifier</i>
+					<div class="projets">
+						<h2>Mes Projets</h2>
+						<a href="#modal" class="edit open__modal">
+							<i class="fa-regular fa-pen-to-square"></i>
+							modifier
+						</a>
 					</div>
 					<div class="filters"></div>
-					<div class="gallery">
-					</div>
+					<div class="gallery"></div>
 				</section>
 				<section id="contact">
 					<h2>Contact</h2>
@@ -68,7 +73,6 @@
 					</form>
 				</section>
 			</main>
-	
 			<footer>
 				<nav>
 					<ul>
@@ -77,7 +81,45 @@
 				</nav>
 			</footer>
 		</div>
-		<script src="./assets/js/gallery.js" type="module"></script>
-		<script src="./assets/js/login.js" type="module"></script>
+		<aside id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal__title">
+			<div class="modal__wrapper">
+				<button class="modal__close__btn">
+					<i class="fa-solid fa-xmark"></i>
+				</button>
+				<div class="modal__1">
+					<h1 id="modal__title">Galerie photo</h1>
+					<div class="modal__gallery"></div>
+					<hr class="grey__line">
+					<button type="submit">Ajouter une photo</button>
+					<p>Supprimer la galerie</p>
+				</div>
+				<!-- <div class="modal__2">
+					<button class="modal__arrow__btn">
+						<i class="fa-solid fa-arrow-left"></i>
+					</button>
+					<h2 class="modal__title">Ajout photo</h2>
+					<form action="#" method="POST" id="add__works">
+						<label for="image" id="image__container">
+							<i class="fa-regular fa-image"></i>
+							<button class="add__image__btn">+ Ajouter photo</button>
+							<p class="image__maxsize">jpg, png : 4mo max</p>
+							<img src="#" alt="aperçu" class="img__preview">
+						</label>
+						<input type="file" name="image" id="image" accept="image/png, image/jpeg">
+						<label for="title">Titre</label>
+						<input type="text" name="title" id="title">
+						<label for="category">Catégorie</label>
+						<select name="category" id="category">
+							<option value=""></option>
+						</select>
+					</form>
+					<hr class="grey__line">
+					<button id="validate" type="submit">Valider</button>
+				</div> -->
+			</div>
+		</aside>
+		<script src="./assets/js/gallery.js"></script>
+		<script src="./assets/js/login.js"></script>
+		<script src="./assets/js/modal.js"></script>
 	</body>
 </html>
