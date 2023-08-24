@@ -399,6 +399,7 @@ main {
 	display: flex;
 	justify-content: center;
 	color: #B1663C;
+	margin-top: 15px;
 }
 
 /* Modal */
@@ -470,6 +471,34 @@ main {
 
 .modal__gallery img {
 	width: 100%;
+}
+
+.modal__gallery figure {
+	position: relative;
+}
+
+.modal__gallery figure > div {
+	position: absolute;
+	top: 7px;
+	right: 7px;
+	display: flex;
+	gap: 3px;
+}
+.modal__gallery figure div > i {
+	color: #FFF;
+	font-size: 0.625rem;
+	background-color: #000;
+	border-radius: 2px;
+	padding: 3px;
+	cursor: pointer;
+}
+
+.modal__gallery figure div > .fa-arrows-up-down-left-right {
+	display: none;
+}
+
+.modal__gallery figure:first-child div > .fa-arrows-up-down-left-right { 
+	display: block;
 }
 
 .modal__gallery figcaption {

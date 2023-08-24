@@ -48,7 +48,6 @@ async function postLogin() {
 		const loginError = document.querySelector('form .error');
 
 		loginError.textContent = "Erreur dans l'identifiant ou le mot de passe";
-		loginError.style.margin = '15px 0 0 0';
 	}
 }
 
