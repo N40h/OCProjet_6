@@ -529,12 +529,13 @@ main {
 	cursor: pointer;
 }
 
-.modal__1 p {
+.modal__1 .delete__gallery {
 	color: #D65353;
 	font-family: 'Syne';
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+	cursor: pointer;
 }
 
 .modal__2 .modal__arrow__btn {
@@ -566,6 +567,28 @@ main {
 	margin-bottom: 47px;
 }
 
+#add__works input#title,
+#add__works select#category {
+	padding: 0 16px;
+	color: #444;
+	font-weight: 400;
+}
+
+#add__works input#title {
+	margin-bottom: 21px;
+}
+
+
+#add__works label:nth-child(2),
+#add__works label:nth-child(4) {
+	color: #3D3D3D;
+	font-size: 0.875rem;
+	font-weight: 500;
+	font-style: normal;
+	line-height: normal;
+	margin-bottom: 10px;
+}
+
 .modal__2 #image__container {
 	display: flex;
 	flex-direction: column;
@@ -591,6 +614,7 @@ main {
 	font-style: normal;
 	font-weight: 500;
 	margin-bottom: 7px;
+	cursor: pointer;
 }
 
 #image__container .image__maxsize {
@@ -602,24 +626,12 @@ main {
 
 #image__container .img__preview {
 	display: none;
+	width: 130px;
+	height: 190px;
 }
 
 input[type="file"] {
 	display: none;
-}
-
-#add__works input#title {
-	margin-bottom: 21px;
-}
-
-#add__works label:nth-child(3),
-#add__works label:nth-child(5) {
-	color: #3D3D3D;
-	font-size: 0.875rem;
-	font-weight: 500;
-	font-style: normal;
-	line-height: normal;
-	margin-bottom: 10px;
 }
 
 .modal__2 .grey__line {

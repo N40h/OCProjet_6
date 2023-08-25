@@ -91,26 +91,26 @@
 					<div class="modal__gallery"></div>
 					<hr class="grey__line">
 					<button type="submit" class="add__pictures__btn">Ajouter une photo</button>
-					<p>Supprimer la galerie</p>
+					<p class="delete__gallery">Supprimer la galerie</p>
 				</div>
 				<div class="modal__2">
 					<button class="modal__arrow__btn">
 						<i class="fa-solid fa-arrow-left"></i>
 					</button>
 					<h2 class="modal__title">Ajout photo</h2>
-					<form action="#" method="POST" id="add__works">
+					<form action="#" method="post" id="add__works">
 						<label for="image" id="image__container">
-							<i class="fa-regular fa-image"></i>
-							<button class="add__image__btn">+ Ajouter photo</button>
+							<i class="fa-regular fa-image preview__icon"></i>
+							<input type="button" value="+ Ajouter photo" class="add__image__btn">
+							<input type="file" name="image" id="image" accept="image/png, image/jpeg">
 							<p class="image__maxsize">jpg, png : 4mo max</p>
 							<img src="#" alt="aperçu" class="img__preview">
 						</label>
-						<input type="file" name="image" id="image" accept="image/png, image/jpeg">
 						<label for="title">Titre</label>
 						<input type="text" name="title" id="title">
 						<label for="category">Catégorie</label>
 						<select name="category" id="category">
-							<option value=""></option>
+							<option value="test">test</option>
 						</select>
 					</form>
 					<hr class="grey__line">
