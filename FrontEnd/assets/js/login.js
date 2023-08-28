@@ -3,9 +3,7 @@
 /**********************/
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
-
 const userConnected = sessionStorage.getItem('token');
-
 const editModeElements = document.querySelectorAll('.edit');
 const loginElement = document.querySelector('.login');
 
@@ -51,11 +49,12 @@ async function postLogin() {
 	}
 }
 
+// Handles user login form submission
 function loginUser() {
 	const form = document.querySelector('form');
 
-	form.addEventListener('submit', async (event) => {
-		event.preventDefault(); // Annulation du refresh de la page
+	form.addEventListener('submit', async (e) => {
+		e.preventDefault();
 
 		getEmailValue();
 		getPasswordValue();
@@ -64,6 +63,7 @@ function loginUser() {
 	});
 }
 
+// Handles user logout
 function logoutUser() {
 	const logoutElement = document.querySelector('.logout');
 
@@ -74,6 +74,7 @@ function logoutUser() {
 	});
 }
 
+// Toggles between edit mode and non-edit mode based on user authentication
 function toggleEditMode() {
 	if (userConnected) {
 		editModeElements.forEach((element) => {

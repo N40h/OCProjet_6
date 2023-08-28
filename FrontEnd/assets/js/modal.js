@@ -1,18 +1,16 @@
 /***********************
 /*       DOM
 /**********************/
+const publishChangeButton = document.querySelector('.edit__banner__btn');
 const modal = document.getElementById('modal');
 const modalCloseButton = modal.querySelector('.modal__close__btn');
 const modalOpenLinks = document.querySelectorAll('.open__modal');
 const modalGallery = modal.querySelector('.modal__gallery');
-
 const modalOne = modal.querySelector('.modal__1');
 const modalTwo = modal.querySelector('.modal__2');
-
 const addPicturesButton = modalOne.querySelector('.add__pictures__btn');
 const deleteGallery = document.querySelector('.delete__gallery');
 const arrowButton = modalTwo.querySelector('.modal__arrow__btn');
-
 const modalForm = document.getElementById('add__works');
 const imageContainer = document.getElementById('image__container');
 const previewIcon = modalTwo.querySelector('.preview__icon');
@@ -20,10 +18,11 @@ const addImageButton = modalTwo.querySelector('.add__image__btn');
 const imageInput = document.getElementById('image');
 const imageSize = modalTwo.querySelector('.image__maxsize');
 const imagePreview = modalTwo.querySelector('.img__preview');
-
 const titleInput = document.getElementById('title');
 const categoryInput = document.getElementById('category');
 const validateButton = document.getElementById('validate');
+const addWorksError = document.querySelector('form .error');
+const addWorksSuccess = document.querySelector('form .success');
 
 /***********************
 /*         Variables
@@ -35,6 +34,7 @@ let currentFile = '';
 /***********************
 /*       Functions
 /**********************/
+// Opens the modal and initializes its content
 function openModal(e) {
 	e.preventDefault();
 	modal.style.display = 'flex';
@@ -49,15 +49,16 @@ function openModal(e) {
 	displayGalleryInModal(displayedWorks);
 	initModal();
 	selectCategory(categories);
-	validateForm();
+	renderForm();
 }
 
+// Closes the modal
 function closeModal(e) {
 	e.preventDefault();
 	modal.style.display = 'none';
-	resetPreview();
+	resetPreviewImage();
 	resetInputFields();
-	resetFormValidation();
+	resetFormRendering();
 }
 
 function stopPropagation(e) {
@@ -121,10 +122,9 @@ async function deleteWorks(id) {
 	});
 }
 
-function updatePreview(e) {
+// Updates the preview image when an image is selected
+function updatePreviewImage(e) {
 	currentFile = e.target.files[0];
-
-	console.log('File input changed:', e.target.files[0]);
 
 	if (currentFile) {
 		imagePreview.src = URL.createObjectURL(currentFile);
@@ -136,7 +136,7 @@ function updatePreview(e) {
 	}
 }
 
-function resetPreview() {
+function resetPreviewImage() {
 	imagePreview.src = '';
 	URL.revokeObjectURL(imagePreview.src);
 	imagePreview.style.display = 'none';
@@ -145,12 +145,13 @@ function resetPreview() {
 	imageSize.style.display = 'block';
 }
 
+// Renders category options in the modal
 function selectCategory(data) {
 	categoryInput.innerHTML = '';
 
 	data.forEach((option) => {
 		let categoryElement = document.createElement('option');
-		categoryElement.value = option.name;
+		categoryElement.value = option.id;
 		categoryElement.textContent = option.name;
 		categoryInput.appendChild(categoryElement);
 	});
@@ -161,37 +162,33 @@ function resetInputFields() {
 	titleInput.value = '';
 }
 
-function validateForm() {
+function renderForm() {
+	addWorksError.textContent = 'Veuillez renseigner tous les champs';
 	modalForm.addEventListener('change', () => {
-		// imageInput.files.length === 0
-		if (currentFile !== '' && titleInput.value !== '') {
+		if (currentFile.name !== undefined && titleInput.value !== '') {
 			validateButton.style.background = '#1D6154';
-			return;
+			addWorksError.style.display = 'none';
 		} else {
 			validateButton.style.background = null;
+			addWorksError.style.display = 'flex';
 		}
 	});
 }
 
-function resetFormValidation() {
+function resetFormRendering() {
 	validateButton.style.background = null;
+	addWorksSuccess.style.display = 'none';
+	addWorksError.style.display = 'flex';
 }
 
+// Sends new works data to the server
 async function sendWorks() {
-	console.log('send works');
-
 	const bearer = sessionStorage.getItem('token');
-	const formValue = {
-		image: currentFile,
-		title: titleInput.value,
-		category: categoryInput.value,
-	};
-	console.log(formValue.image);
 
 	const formData = new FormData();
-	formData.append('imageUrl', formValue.image);
-	formData.append('title', formValue.title);
-	formData.append('categoryId', formValue.category);
+	formData.append('image', currentFile);
+	formData.append('title', titleInput.value);
+	formData.append('category', categoryInput.value);
 
 	const response = await fetch(`http://localhost:5678/api/works`, {
 		method: 'POST',
@@ -202,12 +199,13 @@ async function sendWorks() {
 	});
 
 	if (response.ok) {
-		console.log('Work added successfully');
+		addWorksSuccess.style.display = 'flex';
+		addWorksSuccess.textContent = 'Ajout du projet réalisé avec succès';
 	} else {
-		console.log('Failed to add work');
+		addWorksSuccess.style.display = 'none';
 	}
-	console.log('finish send works');
 }
+
 /***********************
 /*       EventListeners
 /**********************/
@@ -225,13 +223,17 @@ arrowButton.addEventListener('click', () => {
 	isModalOne = true;
 	modalOne.style.display = 'block';
 	modalTwo.style.display = 'none';
-	resetPreview();
+	resetPreviewImage();
+	resetInputFields();
+	resetFormRendering();
 });
 
 addImageButton.addEventListener('click', () => {
 	imageInput.click();
 });
 
-imageInput.addEventListener('change', updatePreview);
+imageInput.addEventListener('change', updatePreviewImage);
 
 validateButton.addEventListener('click', sendWorks);
+
+publishChangeButton.addEventListener('click', getWorks);

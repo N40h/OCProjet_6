@@ -99,6 +99,7 @@ section {
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
+	cursor: pointer;
 }
 
 
@@ -188,6 +189,17 @@ h2 {
 #introduction figcaption {
 	margin-top: 15px;
 	margin-left: 57px;
+}
+
+#introduction a.edit {
+	display: flex;
+	gap: 10px;
+	color: #000;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 #introduction article {
@@ -578,7 +590,6 @@ main {
 	margin-bottom: 21px;
 }
 
-
 #add__works label:nth-child(2),
 #add__works label:nth-child(4) {
 	color: #3D3D3D;
@@ -650,4 +661,16 @@ input[type="file"] {
 	font-family: 'Syne';
 	font-weight: 700;
 	width: 237px;
+}
+
+.modal__2 .success,
+.modal__2 .error {
+	display: flex;
+	justify-content: center;
+	color: #1D6154;
+	margin-top: 15px;
+}
+
+.modal__2 .error {
+	color: #B1663C;
 }

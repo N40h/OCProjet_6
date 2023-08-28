@@ -14,6 +14,7 @@ let displayedWorks = [];
 /***********************
 /*      Functions
 /**********************/
+// Fetches works data and render them in the gallery
 async function getWorks() {
 	const response = await fetch('http://localhost:5678/api/works');
 	works = await response.json();
@@ -23,6 +24,7 @@ async function getWorks() {
 	renderWorks(displayedWorks);
 }
 
+// Fetches categories data and renders the filter buttons
 async function getCategories() {
 	const response = await fetch('http://localhost:5678/api/categories');
 	categories = await response.json();
@@ -30,6 +32,7 @@ async function getCategories() {
 	renderCategories(categories);
 }
 
+// Renders works in the gallery based on the provided data
 function renderWorks(data) {
 	GALLERY.innerHTML = '';
 
@@ -48,6 +51,7 @@ function renderWorks(data) {
 	});
 }
 
+// Renders filters buttons based on the provided categories
 function renderCategories(data) {
 	FILTERS.innerHTML = '';
 

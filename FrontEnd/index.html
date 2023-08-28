@@ -22,7 +22,7 @@
 				<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 				<nav>
 					<ul>
-						<li>projets</li>
+						<li><a href="#portfolio">projets</a></li>
 						<li><a href="#contact">contact</a></li>
 						<li class="login"><a href="./assets/pages/login.html">login</a></li>
 						<li class="edit logout">logout</li>
@@ -35,7 +35,7 @@
 					<figure>
 						<img src="./assets/images/sophie-bluel.png" alt="Sophie Bluel Portrait">
 						<figcaption>
-							<a href="#modal" class="edit open__modal">
+							<a href="#" class="edit">
 								<i class="fa-regular fa-pen-to-square"></i>
 								modifier
 							</a>
@@ -110,8 +110,10 @@
 						<input type="text" name="title" id="title">
 						<label for="category">Catégorie</label>
 						<select name="category" id="category">
-							<option value="test">test</option>
+							<option value=""></option>
 						</select>
+						<span class="success"></span>
+						<span class="error"></span>
 					</form>
 					<hr class="grey__line">
 					<button id="validate" type="submit">Valider</button>
