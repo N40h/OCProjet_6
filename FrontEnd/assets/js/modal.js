@@ -201,6 +201,7 @@ async function sendWorks() {
 	if (response.ok) {
 		addWorksSuccess.style.display = 'flex';
 		addWorksSuccess.textContent = 'Ajout du projet réalisé avec succès';
+		getWorks();
 	} else {
 		addWorksSuccess.style.display = 'none';
 	}
@@ -236,4 +237,4 @@ imageInput.addEventListener('change', updatePreviewImage);
 
 validateButton.addEventListener('click', sendWorks);
 
-publishChangeButton.addEventListener('click', getWorks);
+// publishChangeButton.addEventListener('click', getWorks);

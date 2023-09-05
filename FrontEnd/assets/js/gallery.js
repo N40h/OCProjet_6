@@ -65,15 +65,32 @@ function renderCategories(data) {
 
 		FILTERS.appendChild(filtersButton);
 
-		filtersButton.addEventListener('click', () => {
+		filtersButton.addEventListener('click', (e) => {
 			const filteredWorks = works.filter(
 				(work) => work.categoryId === category.id
 			);
+			const currentButton = e.target;
+
+			document.querySelectorAll('.active').forEach((button) => {
+				button.classList.remove('active');
+			});
+			currentButton.classList.add('active');
+
+			filtersAllButton.style.background = 'transparent';
+			filtersAllButton.style.color = '#1D6154';
+
 			renderWorks(filteredWorks);
 		});
 	});
 
 	filtersAllButton.addEventListener('click', () => {
+		document.querySelectorAll('.active').forEach((button) => {
+			button.classList.remove('active');
+		});
+
+		filtersAllButton.style.background = '';
+		filtersAllButton.style.color = '';
+
 		renderWorks(displayedWorks);
 	});
 }
