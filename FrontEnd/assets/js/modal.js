@@ -107,6 +107,23 @@ function displayGalleryInModal(data) {
 	});
 }
 
+function switchToModalTwo() {
+	isModalOne = false;
+	modalOne.style.display = 'none';
+	modalTwo.style.display = 'block';
+	resetPreviewImage();
+	resetInputFields();
+	resetFormRendering();
+}
+
+function switchToModalOne() {
+	isModalOne = true;
+	modalOne.style.display = 'block';
+	modalTwo.style.display = 'none';
+
+	getWorks();
+}
+
 function initModal() {
 	modalOne.style.display = 'block';
 	modalTwo.style.display = 'none';
@@ -199,9 +216,9 @@ async function sendWorks() {
 	});
 
 	if (response.ok) {
+		await getWorks();
 		addWorksSuccess.style.display = 'flex';
 		addWorksSuccess.textContent = 'Ajout du projet réalisé avec succès';
-		getWorks();
 	} else {
 		addWorksSuccess.style.display = 'none';
 	}
@@ -214,20 +231,9 @@ modalOpenLinks.forEach((link) => {
 	link.addEventListener('click', openModal);
 });
 
-addPicturesButton.addEventListener('click', () => {
-	isModalOne = false;
-	modalOne.style.display = 'none';
-	modalTwo.style.display = 'block';
-});
+addPicturesButton.addEventListener('click', switchToModalTwo);
 
-arrowButton.addEventListener('click', () => {
-	isModalOne = true;
-	modalOne.style.display = 'block';
-	modalTwo.style.display = 'none';
-	resetPreviewImage();
-	resetInputFields();
-	resetFormRendering();
-});
+arrowButton.addEventListener('click', switchToModalOne);
 
 addImageButton.addEventListener('click', () => {
 	imageInput.click();
@@ -236,5 +242,3 @@ addImageButton.addEventListener('click', () => {
 imageInput.addEventListener('change', updatePreviewImage);
 
 validateButton.addEventListener('click', sendWorks);
-
-// publishChangeButton.addEventListener('click', getWorks);
