@@ -180,7 +180,6 @@ function resetInputFields() {
 }
 
 function renderForm() {
-	addWorksError.textContent = 'Veuillez renseigner tous les champs';
 	modalForm.addEventListener('change', () => {
 		if (currentFile.name !== undefined && titleInput.value !== '') {
 			validateButton.style.background = '#1D6154';
@@ -188,6 +187,8 @@ function renderForm() {
 		} else {
 			validateButton.style.background = null;
 			addWorksError.style.display = 'flex';
+			addWorksError.textContent = 'Veuillez renseigner tous les champs';
+			addWorksSuccess.textContent = '';
 		}
 	});
 }
@@ -217,10 +218,14 @@ async function sendWorks() {
 
 	if (response.ok) {
 		await getWorks();
+		resetInputFields();
+		resetPreviewImage();
 		addWorksSuccess.style.display = 'flex';
 		addWorksSuccess.textContent = 'Ajout du projet réalisé avec succès';
 	} else {
+		validateButton.style.background = null;
 		addWorksSuccess.style.display = 'none';
+		addWorksError.style.display = 'flex';
 	}
 }
 
